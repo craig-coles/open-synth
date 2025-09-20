@@ -1,0 +1,29 @@
+{
+    "github.copilot.enabled": false,
+    "github.copilot.inlineSuggest.enable": false,
+    "editor.inlineSuggest.enabled": false,
+    "editor.suggest.preview": false,
+    "editor.acceptSuggestionOnEnter": "off",
+
+    // Rust-specific settings for inline errors:
+    "rust-analyzer.check.command": "clippy",
+    "rust-analyzer.check.allTargets": false,
+    "rust-analyzer.cargo.autoreload": true,
+    "rust-analyzer.diagnostics.enable": true,
+    "rust-analyzer.diagnostics.enableExperimental": true,
+
+    // Formatting
+    "editor.formatOnSave": true,
+    "[rust]": {
+      "editor.defaultFormatter": "rust-lang.rust-analyzer",
+      "editor.formatOnSave": true,
+      "editor.formatOnType": true
+    },
+
+    // Show problems inline
+    "problems.decorations.enabled": true,
+    "editor.renderValidationDecorations": "on",
+
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true
+  }
