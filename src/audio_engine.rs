@@ -39,7 +39,7 @@ impl SynthEngine {
         let mut active_voices = 0;
 
         for oscillator in &mut self.oscillators {
-            if self.is_oscillator_active(oscillator) {
+            if oscillator.get_amplitude() > 0.0 {
                 mixed_sample += oscillator.next_sample();
                 active_voices += 1;
             }
@@ -56,7 +56,7 @@ impl SynthEngine {
         if let Some(oscillator) = self
             .oscillators
             .iter_mut()
-            .find(|osc| !self.is_oscillator_active(osc))
+            .find(|osc| osc.get_amplitude() <= 0.0)
         {
             oscillator.set_midi_note(note);
             let amplitude = (velocity as f32 / 127.0) * 0.3;
@@ -64,7 +64,7 @@ impl SynthEngine {
         }
     }
 
-    fn note_off(&mut self, note: u8) {
+    fn note_off(&mut self, _note: u8) {
         for oscillator in &mut self.oscillators {
             oscillator.set_amplitude(0.0);
         }
